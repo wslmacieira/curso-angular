@@ -12,9 +12,11 @@ export class DataBindingComponent implements OnInit {
   urlImagem = 'https://loremflickr.com/400/200';
 
   valorAtual = '';
-  valorSalvo;
+  valorSalvo = '';
 
   isMouseOver = false;
+
+  nomeDoCurso = 'Angular';
 
   getValor() {
     return 1;
