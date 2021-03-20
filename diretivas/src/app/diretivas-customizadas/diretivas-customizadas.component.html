@@ -11,3 +11,25 @@
 <p [appHighlight]="'red'" [defaultColor]="'grey'">
   Texto com highlight com cores customizadas.
 </p>
+
+<h3>Diretiva Estruturada customizada - ngElse</h3>
+
+<div *ngIf="mostrarCursos; else elseBlock">
+  Lista de cursos aqui.
+</div>
+<div *ngElse="mostrarCursos">
+  Não existem cursos para serem listados.
+</div>
+
+<ng-template [ngElse]="mostrarCursos">
+  <div>
+    Não existem cursos para serem listados.
+  </div>
+</ng-template>
+
+<ng-template #elseBlock>
+  Não existem cursos para serem listados.
+</ng-template>
+
+<br>
+<button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button>
