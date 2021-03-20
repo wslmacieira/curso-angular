@@ -20,13 +20,14 @@ export class HighlightMouseDirective {
       // );
       this.backgroundColor = 'yellow';
     }
-    @HostListener('mouseleave') onMouseLeave(): void {
-      // this.renderer.setStyle(
-        //   this.elementRef.nativeElement,
-        //   'background-color', 'white'
-        // );
-        this.backgroundColor = 'white';
-      }
+
+  @HostListener('mouseleave') onMouseLeave(): void {
+    // this.renderer.setStyle(
+      //   this.elementRef.nativeElement,
+      //   'background-color', 'white'
+      // );
+      this.backgroundColor = 'white';
+    }
 
   constructor(
     private elementRef: ElementRef,
