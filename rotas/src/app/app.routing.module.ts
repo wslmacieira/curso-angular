@@ -8,14 +8,20 @@ import { CursoDetalheComponent } from './cursos/curso-detalhe/curso-detalhe.comp
 import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso-nao-encontrado.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  {
+    path: 'cursos',
+    loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule)
+  },
+  {
+    path: 'alunos',
+    loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule)
+  },
   { path: 'login', component: LoginComponent },
-  { path: 'cursos', component: CursosComponent },
-  { path: 'curso/:id', component: CursoDetalheComponent },
-  { path: 'cursos/nao-encontrado', component: CursoNaoEncontradoComponent }
+  { path: '', component: HomeComponent },
+  // { path: 'cursos', component: CursosComponent },
+  // { path: 'curso/:id', component: CursoDetalheComponent },
+  // { path: 'cursos/nao-encontrado', component: CursoNaoEncontradoComponent }
 ];
-
-export const routing = RouterModule.forRoot(appRoutes);
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],

@@ -14,8 +14,8 @@ export class CursoDetalheComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private cursosService: CursosService) {
-   // this.id = this.route.snapshot.params['id'];
-   // console.log(this.route);
+    // this.id = this.route.snapshot.params['id'];
+    // console.log(this.route);
   }
 
   id: number;

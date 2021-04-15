@@ -24,14 +24,14 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
     this.inscricao = this.route.params.subscribe(
       (params: any) => this.id = params.id);
     this.aluno = this.alunosService.getAluno(this.id);
-    }
+  }
 
   ngOnDestroy(): void {
     this.inscricao.unsubscribe();
   }
 
-  editarContato(): void{
-    this.router.navigate(['/alunos', this.aluno.id, 'editar']);
+  editarContato(): void {
+    this.router.navigate(['alunos', this.aluno.id, 'editar']);
   }
 
 }
