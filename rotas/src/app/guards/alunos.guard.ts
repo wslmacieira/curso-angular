@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlunosGuard implements CanActivate {
+export class AlunosGuard implements CanActivateChild {
 
-  canActivate(
+  canActivateChild(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean> | boolean {
