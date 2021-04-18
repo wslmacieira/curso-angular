@@ -12,8 +12,8 @@ export class TemplateFormComponent implements OnInit {
   ngOnInit() {
   }
   usuario: any = {
-    nome: 'wagner',
-    email: 'wagner@email.com'
+    nome: null,
+    email: null
   }
 
   onSubmit(form): void {
