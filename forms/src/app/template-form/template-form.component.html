@@ -16,5 +16,5 @@
       Email é obrigatório.
     </span>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" [disabled]="!formTemplate.valid" class="btn btn-primary">Submit</button>
 </form>
