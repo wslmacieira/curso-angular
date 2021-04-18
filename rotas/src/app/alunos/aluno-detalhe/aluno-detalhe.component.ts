@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Aluno } from '../aluno';
 import { AlunosService } from '../alunos.service';
 
 @Component({
@@ -17,13 +18,18 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private alunosService: AlunosService
+    // private alunosService: AlunosService
   ) { }
 
   ngOnInit(): void {
-    this.inscricao = this.route.params.subscribe(
+    /* this.inscricao = this.route.params.subscribe(
       (params: any) => this.id = params.id);
-    this.aluno = this.alunosService.getAluno(this.id);
+    this.aluno = this.alunosService.getAluno(this.id); */
+    this.inscricao = this.route.data.subscribe(
+      (info: { aluno: Aluno }) => {
+        this.aluno = info.aluno;
+      }
+    );
   }
 
   ngOnDestroy(): void {
