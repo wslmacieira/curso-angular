@@ -1,13 +1,20 @@
 <form #formTemplate="ngForm" (ngSubmit)="onSubmit(formTemplate)">
-  <div class="form-group">
-    <label for="Nome">Nome</label>
-    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" [ngModel]="usuario.nome" required
-      #nome>
+  <div class="form-group" [class.has-feedback]="!nome.valid && nome.touched">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" [class.is-invalid]="!nome.valid && nome.touched" name="nome" id="nome"
+      placeholder="Nome" [ngModel]="usuario.nome" required #nome="ngModel">
+    <span *ngIf="!nome.valid && nome.touched" [class.invalid-feedback]="!nome.valid && nome.touched">
+      Nome é obrigatório.
+    </span>
   </div>
-  <div class="form-group">
+  <div class="form-group" [class.has-error]="!email.valid && email.touched"
+    [class.has-feedback]="!email.valid && email.touched">
     <label for="email">Email</label>
-    <input type="email" class="form-control" name="email" id="email" placeholder="nome@email.com"
-      [ngModel]="usuario.email" required email>
+    <input type="email" class="form-control" [class.is-invalid]="!email.valid && email.touched" name="email" id="email"
+      placeholder="nome@email.com" [ngModel]="usuario.email" required email #email="ngModel">
+    <span *ngIf="!email.valid && email.touched" [class.invalid-feedback]="!email.valid && email.touched">
+      Email é obrigatório.
+    </span>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
