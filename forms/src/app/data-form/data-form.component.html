@@ -75,8 +75,10 @@
       </div>
       <div class="col-md-3">
         <label for="estado" class="col-form-label">Estado</label>
-        <input type="text" class="form-control" id="estado" formControlName="estado"
+        <select type="text" class="form-control" id="estado" formControlName="estado"
           [ngClass]="{'is-invalid': verificaValidTouched('endereco.estado')}">
+          <option *ngFor="let estado of estados | async" [value]="estado.sigla">{{ estado.nome }}</option>
+        </select>
         <span *ngIf="verificaValidTouched('endereco.estado')"
           [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.estado')}">
           Estado é obrigatório.
