@@ -20,21 +20,23 @@
     </div>
   </div>
 
-  <div>
+  <div formGroupName="endereco">
     <div class="form-group row">
       <div class="col-md-3">
         <label for="cep" class="col-form-label">CEP</label>
         <input type="text" class="form-control" id="cep" formControlName="cep"
-          [ngClass]="{'is-invalid': verificaValidTouched('cep')}">
-        <span *ngIf="verificaValidTouched('cep')" [ngClass]="{'invalid-feedback': verificaValidTouched('cep')}">
+          [ngClass]="{'is-invalid': verificaValidTouched('endereco.cep')}">
+        <span *ngIf="verificaValidTouched('endereco.cep')"
+          [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.cep')}">
           CEP é obrigatório.
         </span>
       </div>
       <div class="col-md-3">
         <label for="numero" class="col-form-label">Número</label>
         <input type="text" class="form-control" id="numero" formControlName="numero"
-          [ngClass]="{'is-invalid': verificaValidTouched('numero')}">
-        <span *ngIf="verificaValidTouched('numero')" [ngClass]="{'invalid-feedback': verificaValidTouched('numero')}">
+          [ngClass]="{'is-invalid': verificaValidTouched('endereco.numero')}">
+        <span *ngIf="verificaValidTouched('endereco.numero')"
+          [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.numero')}">
           Número é obrigatório.
         </span>
       </div>
@@ -45,8 +47,9 @@
       <div class="col-sm-12">
         <label for="rua" class="col-form-label">Rua</label>
         <input type="text" class="form-control" id="rua" formControlName="rua"
-          [ngClass]="{'is-invalid': verificaValidTouched('rua')}">
-        <span *ngIf="verificaValidTouched('rua')" [ngClass]="{'invalid-feedback': verificaValidTouched('rua')}">
+          [ngClass]="{'is-invalid': verificaValidTouched('endereco.rua')}">
+        <span *ngIf="verificaValidTouched('endereco.rua')"
+          [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.rua')}">
           Rua é obrigatório.
         </span>
       </div>
@@ -55,24 +58,27 @@
       <div class="col-md-5">
         <label for="bairro" class="col-form-label">Bairro</label>
         <input type="text" class="form-control" id="bairro" formControlName="bairro"
-          [ngClass]="{'is-invalid': verificaValidTouched('bairro')}">
-        <span *ngIf="verificaValidTouched('bairro')" [ngClass]="{'invalid-feedback': verificaValidTouched('bairro')}">
+          [ngClass]="{'is-invalid': verificaValidTouched('endereco.bairro')}">
+        <span *ngIf="verificaValidTouched('endereco.bairro')"
+          [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.bairro')}">
           Bairro é obrigatório.
         </span>
       </div>
       <div class="col-md-4">
         <label for="cidade" class="col-form-label">Cidade</label>
         <input type="text" class="form-control" id="cidade" formControlName="cidade"
-          [ngClass]="{'is-invalid': verificaValidTouched('cidade')}">
-        <span *ngIf="verificaValidTouched('cidade')" [ngClass]="{'invalid-feedback': verificaValidTouched('cidade')}">
+          [ngClass]="{'is-invalid': verificaValidTouched('endereco.cidade')}">
+        <span *ngIf="verificaValidTouched('endereco.cidade')"
+          [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.cidade')}">
           Cidade é obrigatório.
         </span>
       </div>
       <div class="col-md-3">
         <label for="estado" class="col-form-label">Estado</label>
         <input type="text" class="form-control" id="estado" formControlName="estado"
-          [ngClass]="{'is-invalid': verificaValidTouched('estado')}">
-        <span *ngIf="verificaValidTouched('estado')" [ngClass]="{'invalid-feedback': verificaValidTouched('estado')}">
+          [ngClass]="{'is-invalid': verificaValidTouched('endereco.estado')}">
+        <span *ngIf="verificaValidTouched('endereco.estado')"
+          [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.estado')}">
           Estado é obrigatório.
         </span>
       </div>
