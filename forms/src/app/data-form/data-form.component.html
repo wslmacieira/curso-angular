@@ -2,13 +2,21 @@
   <div class="form-group row">
     <div class="col-sm-12">
       <label for="nome" class="col-form-label">Nome</label>
-      <input type="text" class="form-control" formControlName="nome" id="nome" placeholder="Nome">
+      <input type="text" class="form-control" formControlName="nome" id="nome" placeholder="Nome"
+        [ngClass]="{'is-invalid': verificaValidTouched('nome')}">
+      <span *ngIf="verificaValidTouched('nome')" [ngClass]="{'invalid-feedback': verificaValidTouched('nome') }">
+        Nome é obrigatório.
+      </span>
     </div>
   </div>
   <div class="form-group row">
     <div class="col-sm-12">
       <label for="email" class="col-form-label">Email</label>
-      <input type="email" class="form-control" formControlName="email" id="email" placeholder="nome@email.com">
+      <input type="email" class="form-control" formControlName="email" id="email" placeholder="nome@email.com"
+        [ngClass]="{'is-invalid': verificaValidTouched('email')}">
+      <span *ngIf="verificaValidTouched('email')" [ngClass]="{'invalid-feedback': verificaValidTouched('email') }">
+        {{this.verificaEmailValido() ? 'Email inválido': 'Email é obrigatório.'}}
+      </span>
     </div>
   </div>
 
