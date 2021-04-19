@@ -27,7 +27,7 @@ export class TemplateFormComponent implements OnInit {
     return !campo.valid && campo.touched;
   }
 
-  consultaCEP(cep): void {
+  consultaCEP(cep, form): void {
     // Nova variável "cep" somente com dígitos.
     cep = cep.replace(/\D/g, '');
 
@@ -40,11 +40,51 @@ export class TemplateFormComponent implements OnInit {
       // Valida o formato do CEP.
       if (validaCep.test(cep)) {
 
+        this.resetaDadosForm(form);
+
         this.http.get(`//viacep.com.br/ws/${cep}/json`).subscribe(
-          data => console.log(data)
+          data => this.populaDadosForm(data, form)
+
         );
       }
     }
+  }
+
+  populaDadosForm(dados, formulario): void {
+    // formulario.setValue({
+    //   nome: formulario.value.nome,
+    //   email: formulario.value.email,
+    //   endereco: {
+    //     rua: dados.logradouro,
+    //     cep: dados.cep,
+    //     numero: '',
+    //     complemento: dados.complemento,
+    //     bairro: dados.bairro,
+    //     cidade: dados.localidade,
+    //     estado: dados.uf
+    //   }
+    // });
+    formulario.form.patchValue({
+      endereco: {
+        rua: dados.logradouro,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+      }
+    });
+  }
+
+  resetaDadosForm(formulario): void {
+    formulario.form.patchValue({
+      endereco: {
+        rua: null,
+        complemento: null,
+        bairro: null,
+        cidade: null,
+        estado: null,
+      }
+    });
   }
 
 }

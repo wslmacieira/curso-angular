@@ -24,7 +24,7 @@
       <div class="col-md-3">
         <label for="cep" class="col-form-label">CEP</label>
         <input type="text" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(cep)}" id="cep" name="cep"
-          [ngModel]="usuario.cep" required #cep="ngModel" (blur)="consultaCEP($event.target.value)">
+          [ngModel]="usuario.cep" required #cep="ngModel" (blur)="consultaCEP($event.target.value, formTemplate)">
         <span *ngIf="!cep.valid && cep.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(cep)}">
           CEP é obrigatório.
         </span>
