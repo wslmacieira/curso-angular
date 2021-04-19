@@ -41,13 +41,30 @@ export class DataFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.formulario);
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-      .subscribe(dados => {
-        console.log(dados);
-        // reseta o form
-        this.resetar();
-      },
-        (error: any) => alert('erro'));
+    if (this.formulario.valid) {
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+        .subscribe(dados => {
+          console.log(dados);
+          // reseta o form
+          this.resetar();
+        },
+          (error: any) => alert('erro')
+        );
+    } else {
+      this.verificaValidacoesForm(this.formulario);
+    }
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup): void {
+    Object.keys(formGroup.controls).forEach(
+      campo => {
+        const controle = formGroup.get(campo);
+        controle.markAsDirty();
+        if (controle instanceof FormGroup) {
+          this.verificaValidacoesForm(controle);
+        }
+      }
+    );
   }
 
   resetar(): void {
@@ -56,7 +73,8 @@ export class DataFormComponent implements OnInit {
 
   verificaValidTouched(campo: string): boolean {
 
-    return !this.formulario.get(campo).valid && this.formulario.get(campo).touched;
+    return !this.formulario.get(campo).valid &&
+      (this.formulario.get(campo).touched || this.formulario.get(campo).dirty);
   }
 
   verificaEmailValido(): boolean {
@@ -80,7 +98,6 @@ export class DataFormComponent implements OnInit {
 
         this.http.get(`//viacep.com.br/ws/${cep}/json`).subscribe(
           data => this.populaDadosForm(data)
-
         );
       }
     }
