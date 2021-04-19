@@ -63,4 +63,52 @@ export class DataFormComponent implements OnInit {
     return this.formulario.get('email').errors.email;
   }
 
+  consultaCEP(): void {
+
+    let cep = this.formulario.get('endereco.cep').value;
+    // Nova variável "cep" somente com dígitos.
+
+    // Verifica se campo cep possui valor informado.
+    if (cep !== '' && cep !== null) {
+      cep = cep.replace(/\D/g, '');
+
+      // Expressão regular para validar o CEP.
+      const validaCep = /^[0-9]{8}/;
+
+      // Valida o formato do CEP.
+      if (validaCep.test(cep)) {
+
+        this.http.get(`//viacep.com.br/ws/${cep}/json`).subscribe(
+          data => this.populaDadosForm(data)
+
+        );
+      }
+    }
+  }
+
+  populaDadosForm(dados): void {
+
+    this.formulario.patchValue({
+      endereco: {
+        rua: dados.logradouro,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+      }
+    });
+  }
+
+  resetaDadosForm(): void {
+    this.formulario.patchValue({
+      endereco: {
+        rua: null,
+        complemento: null,
+        bairro: null,
+        cidade: null,
+        estado: null,
+      }
+    });
+  }
+
 }
