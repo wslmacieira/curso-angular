@@ -20,6 +20,65 @@
     </div>
   </div>
 
+  <div>
+    <div class="form-group row">
+      <div class="col-md-3">
+        <label for="cep" class="col-form-label">CEP</label>
+        <input type="text" class="form-control" id="cep" formControlName="cep"
+          [ngClass]="{'is-invalid': verificaValidTouched('cep')}">
+        <span *ngIf="verificaValidTouched('cep')" [ngClass]="{'invalid-feedback': verificaValidTouched('cep')}">
+          CEP é obrigatório.
+        </span>
+      </div>
+      <div class="col-md-3">
+        <label for="numero" class="col-form-label">Número</label>
+        <input type="text" class="form-control" id="numero" formControlName="numero"
+          [ngClass]="{'is-invalid': verificaValidTouched('numero')}">
+        <span *ngIf="verificaValidTouched('numero')" [ngClass]="{'invalid-feedback': verificaValidTouched('numero')}">
+          Número é obrigatório.
+        </span>
+      </div>
+      <div class="col-md-6">
+        <label for="complemento" class="col-form-label">Complemento</label>
+        <input type="text" class="form-control" id="complemento" formControlName="complemento">
+      </div>
+      <div class="col-sm-12">
+        <label for="rua" class="col-form-label">Rua</label>
+        <input type="text" class="form-control" id="rua" formControlName="rua"
+          [ngClass]="{'is-invalid': verificaValidTouched('rua')}">
+        <span *ngIf="verificaValidTouched('rua')" [ngClass]="{'invalid-feedback': verificaValidTouched('rua')}">
+          Rua é obrigatório.
+        </span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-5">
+        <label for="bairro" class="col-form-label">Bairro</label>
+        <input type="text" class="form-control" id="bairro" formControlName="bairro"
+          [ngClass]="{'is-invalid': verificaValidTouched('bairro')}">
+        <span *ngIf="verificaValidTouched('bairro')" [ngClass]="{'invalid-feedback': verificaValidTouched('bairro')}">
+          Bairro é obrigatório.
+        </span>
+      </div>
+      <div class="col-md-4">
+        <label for="cidade" class="col-form-label">Cidade</label>
+        <input type="text" class="form-control" id="cidade" formControlName="cidade"
+          [ngClass]="{'is-invalid': verificaValidTouched('cidade')}">
+        <span *ngIf="verificaValidTouched('cidade')" [ngClass]="{'invalid-feedback': verificaValidTouched('cidade')}">
+          Cidade é obrigatório.
+        </span>
+      </div>
+      <div class="col-md-3">
+        <label for="estado" class="col-form-label">Estado</label>
+        <input type="text" class="form-control" id="estado" formControlName="estado"
+          [ngClass]="{'is-invalid': verificaValidTouched('estado')}">
+        <span *ngIf="verificaValidTouched('estado')" [ngClass]="{'invalid-feedback': verificaValidTouched('estado')}">
+          Estado é obrigatório.
+        </span>
+      </div>
+    </div>
+  </div>
+
   <button type="submit" class="btn btn-primary mr-2">Submit</button>
   <button class="btn btn-secondary" (click)="resetar()">Cancelar</button>
 
