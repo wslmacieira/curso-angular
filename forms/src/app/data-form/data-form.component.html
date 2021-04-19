@@ -17,6 +17,10 @@
       <span *ngIf="verificaValidTouched('email')" [ngClass]="{'invalid-feedback': verificaValidTouched('email') }">
         {{this.verificaEmailValido() ? 'Email inválido': 'Email é obrigatório.'}}
       </span>
+      <span *ngIf="formulario.get('email').hasError('emailInvalido')"
+        [ngClass]="{'invalid-feedback': verificaValidTouched('email') }">
+        Email já cadastrado.
+      </span>
     </div>
   </div>
 
