@@ -2,11 +2,9 @@
   <div class="form-group row">
     <div class="col-sm-12">
       <label for="nome" class="col-form-label">Nome</label>
-    </div>
-    <div class="col-sm-12">
-      <input type="text" class="form-control" [class.is-invalid]="!nome.valid && nome.touched" name="nome" id="nome"
-        placeholder="Nome" [ngModel]="usuario.nome" required #nome="ngModel">
-      <span *ngIf="!nome.valid && nome.touched" [class.invalid-feedback]="!nome.valid && nome.touched">
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(nome)}" name="nome"
+        id="nome" placeholder="Nome" [ngModel]="usuario.nome" required #nome="ngModel">
+      <span *ngIf="!nome.valid && nome.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(nome)}">
         Nome é obrigatório.
       </span>
     </div>
@@ -14,11 +12,9 @@
   <div class="form-group row">
     <div class="col-sm-12">
       <label for="email" class="col-form-label">Email</label>
-    </div>
-    <div class="col-sm-12">
-      <input type="email" class="form-control" [class.is-invalid]="!email.valid && email.touched" name="email"
+      <input type="email" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(email)}" name="email"
         id="email" placeholder="nome@email.com" [ngModel]="usuario.email" required email #email="ngModel">
-      <span *ngIf="!email.valid && email.touched" [class.invalid-feedback]="!email.valid && email.touched">
+      <span *ngIf="!email.valid && email.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(email)}">
         Email é obrigatório.
       </span>
     </div>
@@ -26,17 +22,17 @@
   <div class="form-group row">
     <div class="col-md-3">
       <label for="cep" class="col-form-label">CEP</label>
-      <input type="text" class="form-control" [class.is-invalid]="!cep.valid && cep.touched" id="cep" name="cep"
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(cep)}" id="cep" name="cep"
         [ngModel]="usuario.cep" required #cep="ngModel">
-      <span *ngIf="!cep.valid && cep.touched" [class.invalid-feedback]="!cep.valid && cep.touched">
+      <span *ngIf="!cep.valid && cep.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(cep)}">
         CEP é obrigatório.
       </span>
     </div>
     <div class="col-md-3">
       <label for="numero" class="col-form-label">Número</label>
-      <input type="text" class="form-control" [class.is-invalid]="!numero.valid && numero.touched" id="numero"
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(numero)}" id="numero"
         name="numero" [ngModel]="usuario.numero" required #numero="ngModel">
-      <span *ngIf="!numero.valid && numero.touched" [class.invalid-feedback]="!numero.valid && numero.touched">
+      <span *ngIf="!numero.valid && numero.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(email)}">
         Número é obrigatório.
       </span>
     </div>
@@ -47,9 +43,9 @@
     </div>
     <div class="col-sm-12">
       <label for="rua" class="col-form-label">Rua</label>
-      <input type="text" class="form-control" [class.is-invalid]="!rua.valid && rua.touched" id="rua" name="rua"
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(rua)}" id="rua" name="rua"
         [ngModel]="usuario.rua" required #rua="ngModel">
-      <span *ngIf="!rua.valid && rua.touched" [class.invalid-feedback]="!rua.valid && rua.touched">
+      <span *ngIf="!rua.valid && rua.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(rua)}">
         Rua é obrigatório.
       </span>
     </div>
@@ -57,25 +53,25 @@
   <div class="form-group row">
     <div class="col-md-5">
       <label for="bairro" class="col-form-label">Bairro</label>
-      <input type="text" class="form-control" [class.is-invalid]="!bairro.valid && bairro.touched" id="bairro"
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(bairro)}" id="bairro"
         name="bairro" [ngModel]="usuario.bairro" required #bairro="ngModel">
-      <span *ngIf="!bairro.valid && bairro.touched" [class.invalid-feedback]="!bairro.valid && bairro.touched">
+      <span *ngIf="!bairro.valid && bairro.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(bairro)}">
         Bairro é obrigatório.
       </span>
     </div>
     <div class="col-md-4">
       <label for="cidade" class="col-form-label">Cidade</label>
-      <input type="text" class="form-control" [class.is-invalid]="!cidade.valid && cidade.touched" id="cidade"
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(cidade)}" id="cidade"
         name="cidade" [ngModel]="usuario.cidade" required #cidade="ngModel">
-      <span *ngIf="!cidade.valid && cidade.touched" [class.invalid-feedback]="!cidade.valid && cidade.touched">
+      <span *ngIf="!cidade.valid && cidade.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(cidade)}">
         Cidade é obrigatório.
       </span>
     </div>
     <div class="col-md-3">
       <label for="estado" class="col-form-label">Estado</label>
-      <input type="text" class="form-control" [class.is-invalid]="!estado.valid && estado.touched" id="estado"
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': verificaValiTouched(estado)}" id="estado"
         name="estado" [ngModel]="usuario.estado" required #estado="ngModel">
-      <span *ngIf="!estado.valid && estado.touched" [class.invalid-feedback]="!estado.valid && estado.touched">
+      <span *ngIf="!estado.valid && estado.touched" [ngClass]="{'invalid-feedback': verificaValiTouched(estado)}">
         Estado é obrigatório.
       </span>
     </div>
