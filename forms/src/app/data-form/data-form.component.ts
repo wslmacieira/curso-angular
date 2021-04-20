@@ -21,6 +21,7 @@ export class DataFormComponent implements OnInit {
   cargos: any[];
   tecnologias: any[];
   newsletterOp: any[];
+  frameworks = ['Angular', 'React', 'Vue', 'Sencha'];
 
   constructor(
     private fb: FormBuilder,
@@ -62,15 +63,31 @@ export class DataFormComponent implements OnInit {
       cargo: [null],
       tecnologia: [null],
       newsletter: ['S'],
-      termos: [null, Validators.requiredTrue]
+      termos: [null, Validators.requiredTrue],
+      frameworks: this.buildFrameworks()
     });
 
   }
+  buildFrameworks(): any {
+
+    const values = this.frameworks.map(v => new FormControl(false));
+    return this.fb.array(values);
+  }
 
   onSubmit(): void {
-    console.log(this.formulario);
+    // console.log(this.formulario);
+
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks.map((v, i) => v ? this.frameworks[i] : null)
+        .filter(v => v !== null)
+    });
+
+    console.log(valueSubmit);
+
     if (this.formulario.valid) {
-      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      this.http.post('https://httpbin.org/post', JSON.stringify(valueSubmit))
         .subscribe(dados => {
           console.log(dados);
           // reseta o form
@@ -146,20 +163,20 @@ export class DataFormComponent implements OnInit {
     });
   }
 
-  setarCargo() {
+  setarCargo(): void {
     const cargo = { nome: 'Dev', nivel: 'Pleno', desc: 'Dev Pl' };
     this.formulario.get('cargo').setValue(cargo);
   }
 
-  compararCargos(obj1, obj2) {
+  compararCargos(obj1, obj2): any {
     return obj1 && obj2 ? (obj1.nome === obj2.nome && obj1.nivel === obj2.nivel) : obj1 === obj2;
   }
 
-  setarTecnologias() {
-    this.formulario.get('tecnologia').setValue(['java', 'javascript', 'php'])
+  setarTecnologias(): void {
+    this.formulario.get('tecnologia').setValue(['java', 'javascript', 'php']);
   }
 
-  validaEmail(formControl: FormControl) {
+  validaEmail(formControl: FormControl): any {
     return this.verificaEmailService.verificarEmail(formControl.value)
       .pipe(
         map(emailExiste => emailExiste ? { emailInvalido: true } : null)
