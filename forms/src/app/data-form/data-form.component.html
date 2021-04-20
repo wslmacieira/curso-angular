@@ -139,6 +139,10 @@
           </label>
         </div>
       </div>
+      <span *ngIf="!formulario.get('frameworks').valid"
+        [ngClass]="{'invalid-feedback d-block': !formulario.get('termos').valid}">
+        Selecione 1 opção.
+      </span>
     </div>
   </div>
 
