@@ -42,7 +42,7 @@
       <div class="col-md-3">
         <label for="cep" class="col-form-label">CEP</label>
         <input type="text" class="form-control" id="cep" formControlName="cep"
-          [ngClass]="{'is-invalid': verificaValidTouched('endereco.cep')}" (blur)="consultaCEP()">
+          [ngClass]="{'is-invalid': verificaValidTouched('endereco.cep')}">
         <span *ngIf="verificaValidTouched('endereco.cep')"
           [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.cep')}">
           CEP é obrigatório.
