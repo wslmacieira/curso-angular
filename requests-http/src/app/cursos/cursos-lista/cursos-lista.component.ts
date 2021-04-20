@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Curso } from '../curso';
 import { CursosService } from '../cursos.service';
+import { Curso } from '../curso';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cursos-lista',
   templateUrl: './cursos-lista.component.html',
-  styleUrls: ['./cursos-lista.component.scss']
+  styleUrls: ['./cursos-lista.component.scss'],
+  preserveWhitespaces: true
 })
 export class CursosListaComponent implements OnInit {
 
-  // cursos: Curso[] = [];
+  // cursos: Curso[];
 
   cursos$: Observable<Curso[]>;
 
-  constructor(private cursoService: CursosService) { }
+  constructor(private service: CursosService) { }
 
-  ngOnInit(): void {
-    // this.cursoService.listar()
-    //   .subscribe(data => this.cursos = data);
-    this.cursos$ = this.cursoService.listar();
+  ngOnInit() {
+    // this.service.list()
+    // .subscribe(dados => this.cursos = dados);
+
+    this.cursos$ = this.service.list();
   }
 
 }
