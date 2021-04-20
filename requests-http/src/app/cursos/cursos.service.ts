@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Curso } from './curso';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Curso } from './curso';
 })
 export class CursosService {
 
-  private readonly API = 'http://localhost:3000';
+  private readonly API = environment.API;
 
   constructor(private http: HttpClient) { }
 
