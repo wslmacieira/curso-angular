@@ -92,19 +92,19 @@
   </div>
 
   <div class="form-group row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <label for="cargo" class="col-form-label">Cargo</label>
       <select type="text" class="form-control" id="cargo" formControlName="cargo" [compareWith]="compararCargos">
         <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{ cargo.desc }}</option>
       </select>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <label for="tecnologia" class="col-form-label">Tecnologia</label>
       <select multiple type="text" class="form-control" id="tecnologia" formControlName="tecnologia" [compareWith]="">
         <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">{{ tecnologia.desc }}</option>
       </select>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <label for="newsletter" class="col-form-label">Newsletter</label>
       <div id="newsletter" class="row">
         <div class="col-sm-4" *ngFor="let item of newsletterOp">
@@ -116,11 +116,25 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <div class="col-md-3">
+      <div class="checkbox">
+        <label class="checkbox-inline">
+          <input type="checkbox" formControlName="termos">
+          Aceito os termos.
+        </label>
+      </div>
+      <span *ngIf="!formulario.get('termos').valid"
+        [ngClass]="{'invalid-feedback d-block': !formulario.get('termos').valid}">
+        Por favor aceite os termos.
+      </span>
+    </div>
+  </div>
 
   <button type="submit" class="btn btn-primary mr-2">Submit</button>
-  <button class="btn btn-secondary" (click)="resetar()">Cancelar</button>
-  <button class="btn btn-secondary" (click)="setarCargo()">Cargo</button>
-  <button class="btn btn-secondary" (click)="setarTecnologias()">Tecnologias</button>
+  <button class="btn btn-secondary mr-2" (click)="resetar()">Cancelar</button>
+  <button class="btn btn-info mr-2" (click)="setarCargo()">Cargo</button>
+  <button class="btn btn-info" (click)="setarTecnologias()">Tecnologias</button>
 
   <app-form-debug [form]="formulario"></app-form-debug>
 

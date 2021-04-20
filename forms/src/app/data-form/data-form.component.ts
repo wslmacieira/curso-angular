@@ -61,7 +61,8 @@ export class DataFormComponent implements OnInit {
       }),
       cargo: [null],
       tecnologia: [null],
-      newsletter: ['S']
+      newsletter: ['S'],
+      termos: [null, Validators.requiredTrue]
     });
 
   }
@@ -162,7 +163,7 @@ export class DataFormComponent implements OnInit {
     return this.verificaEmailService.verificarEmail(formControl.value)
       .pipe(
         map(emailExiste => emailExiste ? { emailInvalido: true } : null)
-      )
+      );
   }
 
 }
