@@ -52,6 +52,7 @@ export class DataFormComponent implements OnInit {
     this.formulario = this.fb.group({
       nome: [null, Validators.required],
       email: [null, [Validators.required, Validators.email], [this.validaEmail.bind(this)]],
+      confirmarEmail: [null, [FormValidations.equalsTo('email')]],
       endereco: this.fb.group({
         cep: [null, [Validators.required, FormValidations.cepValidator]],
         numero: [null, Validators.required],
