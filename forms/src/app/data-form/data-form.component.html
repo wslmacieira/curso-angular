@@ -34,6 +34,10 @@
           [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.cep')}">
           CEP é obrigatório.
         </span>
+        <span *ngIf="formulario.get('endereco.cep').hasError('cepInvalido')"
+          [ngClass]="{'invalid-feedback': verificaValidTouched('endereco.cep')}">
+          CEP inválido.
+        </span>
       </div>
       <div class="col-md-3">
         <label for="numero" class="col-form-label">Número</label>
