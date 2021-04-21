@@ -11,6 +11,22 @@
     {
       "nome": ".Net",
       "id": 3
+    },
+    {
+      "nome": "JavaScript",
+      "id": 4
+    },
+    {
+      "nome": "Flutter",
+      "id": 5
+    },
+    {
+      "nome": "React Native",
+      "id": 6
+    },
+    {
+      "nome": "Git",
+      "id": 7
     }
   ]
 }
