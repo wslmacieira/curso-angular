@@ -22,7 +22,12 @@ export class CursosService {
       );
   }
 
+  loadById(id: number): Observable<Curso> {
+    return this.http.get<Curso>(`${this.API}/${id}`).pipe(take(1));
+  }
+
   create(curso: string): Observable<Curso> {
     return this.http.post<Curso>(this.API, curso).pipe(take(1));
   }
+
 }
