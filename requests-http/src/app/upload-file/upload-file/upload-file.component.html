@@ -1,0 +1,7 @@
+<div style="margin-top: 10px;">
+  <div class="form-group">
+    <label for="custom-file" id="customFileLabel">Selecionar Arquivo</label>
+    <input type="file" class="form-control-file" id="customFile" (change)="onChange($event)" multiple>
+    {{fileNames}}
+  </div>
+</div>
