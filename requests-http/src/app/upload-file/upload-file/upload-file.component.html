@@ -1,8 +1,13 @@
 <div style="margin-top: 10px;">
-  <div class="form-group">
-    <label for="custom-file" id="customFileLabel">Selecionar Arquivo</label>
-    <input type="file" class="form-control-file" id="customFile" (change)="onChange($event)" multiple>
-    {{fileNames}}
+  <div class="custom-file">
+    <label class="custom-file-label" for="custom-file"
+      [innerHTML]="fileNames ? fileNames : 'Selecionar Arquivo'"></label>
+    <input type="file" class="custom-file-input" id="customFile" (change)="onChange($event)" multiple>
+  </div>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" style="overflow: unset;">
+      {{ progress }}%
+    </div>
   </div>
 </div>
 <div style="margin-top: 10px;">

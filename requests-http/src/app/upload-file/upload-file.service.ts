@@ -9,7 +9,7 @@ export class UploadFileService {
 
   constructor(private http: HttpClient) { }
 
-  upload(files: Set<File>, url: string): Observable<HttpEvent<Request>> {
+  upload(files: Set<File>, url: string): Observable<HttpEvent<object>> {
 
     const formData = new FormData();
     files.forEach(file => {
@@ -18,7 +18,10 @@ export class UploadFileService {
     });
 
     const request = new HttpRequest('POST', url, formData);
-    return this.http.request(request);
+    return this.http.post(url, formData, {
+      observe: 'events',
+      reportProgress: true
+    });
   }
 
 }
